@@ -13,10 +13,17 @@ import com.vaadin.flow.templatemodel.TemplateModel;
 
 public class PrismHighlighter extends PolymerTemplate<TemplateModel> {
 
+    /**
+     * Adding the code with automatic highlighting (does not work always)
+     * @param code
+     */
     public PrismHighlighter(String code) {
         setCode(code);
     }
-
+    /**
+     * Adding the code with manual highlighting setting. Supported highlighting features can be found here @see <a href="http://prismjs.com">http://prismjs.com/#languages-list</a>
+     * @param code
+     */
     public PrismHighlighter(String code, String lang) {
         this(code);
         setLang(lang);
