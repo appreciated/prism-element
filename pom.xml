@@ -5,7 +5,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>prism-element</artifactId>
-    <version>0.5</version>
+    <version>0.7</version>
     <name>prism-element</name>
     <description>Integration of prism-element for Vaadin 10</description>
 

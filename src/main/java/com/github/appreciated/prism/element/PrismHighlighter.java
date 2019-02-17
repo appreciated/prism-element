@@ -1,6 +1,5 @@
 package com.github.appreciated.prism.element;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
@@ -14,27 +13,21 @@ import com.vaadin.flow.templatemodel.TemplateModel;
 public class PrismHighlighter extends PolymerTemplate<TemplateModel> {
 
     /**
-     * Adding the code with automatic highlighting (does not work always)
-     * @param code
+     * Adding the code with a highlighting setting.
+     *
+     * @param code the code that is supposed to be highlighted
+     * @param lang the language that is supposed to be highlighted
      */
-    public PrismHighlighter(String code) {
+    public PrismHighlighter(String code, Language lang) {
         setCode(code);
-    }
-    /**
-     * Adding the code with manual highlighting setting. Supported highlighting features can be found here @see <a href="http://prismjs.com">http://prismjs.com/#languages-list</a>
-     * @param code
-     */
-    public PrismHighlighter(String code, String lang) {
-        this(code);
         setLang(lang);
     }
 
-    private void setLang(String lang) {
-        getElement().setAttribute("lang", lang);
+    private void setCode(String code) {
+        getElement().setProperty("code", code);
     }
 
-    private void setCode(String code) {
-        getElement().setAttribute("code", code);
-        //getElement().setText(code);
+    private void setLang(Language lang) {
+        getElement().setAttribute("lang", lang.getLanguage());
     }
 }

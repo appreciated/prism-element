@@ -27,16 +27,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 code: {type: String, observer: '_render'},
                 lang: {type: String}
             },
-            attached: function() {
+            attached: function () {
                 this._render();
             },
-            _render: function() {
+            _render: function () {
                 this.$.output.innerHTML = this.highlight(this.code, this.lang);
             },
-            highlight: function(code, lang) {
-                return this.fire('syntax-highlight', {code: code, lang: lang}).detail.code;
+            highlight: function (code, lang) {
+                if (Prism.languages[lang]) {
+                    return this.fire('syntax-highlight', {code: code, lang: lang}).detail.code;
+                } else {
+                    return this.fire('syntax-highlight', {code: code}).detail.code;
+                }
             }
         });
     </script>
-
 </dom-module>
