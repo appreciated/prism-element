@@ -1,15 +1,14 @@
 package com.github.appreciated.prism.element;
 
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.templatemodel.TemplateModel;
 
 @Tag("prism-highlighter-wrapper")
-@HtmlImport("bower_components/prism-element/prism-highlighter.html")
-@HtmlImport("bower_components/prism-element/prism-theme-default.html")
-@HtmlImport("com/github/appreciated/prism-element/prism-element.html")
-
+@NpmPackage(value = "@polymer/prism-element", version = "3.0.1")
+@JsModule("./com/github/appreciated/prism/prism-element.js")
 public class PrismHighlighter extends PolymerTemplate<TemplateModel> {
 
     /**
