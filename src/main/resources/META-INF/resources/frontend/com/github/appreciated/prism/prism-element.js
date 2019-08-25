@@ -1,5 +1,4 @@
 import {html, PolymerElement} from '@polymer/polymer';
-import '@polymer/prism-element/prism-element.js';
 import '@polymer/prism-element/prism-highlighter.js';
 import '@polymer/prism-element/prism-theme-default.js';
 
@@ -15,17 +14,15 @@ class SampleElement extends PolymerElement {
     }
 
     connectedCallback() {
+        let element = this;
         super.connectedCallback();
-        const ev = new CustomEvent('syntax-highlight');
-
-        // enter code and language here
-        ev.detail = {
-            code: 'p { background-color: blue }',
-            lang: 'css',
-        };
+        console.log(this.code);
+        let ev = new CustomEvent('syntax-highlight', {
+            detail: {
+                code: this.code
+            }
+        });
         this.$.parent.dispatchEvent(ev);
-
-        // detail is modified by prism-highlighter
         this.$.output.innerHTML = ev.detail.code;
     }
 }
