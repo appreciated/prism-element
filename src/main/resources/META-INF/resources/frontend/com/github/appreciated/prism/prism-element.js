@@ -5,10 +5,10 @@ import '@polymer/prism-element/prism-theme-default.js';
 class SampleElement extends PolymerElement {
     static get template() {
         return html`
-<style include="prism-theme-default"></style>
+<style include="prism-theme"></style>
 <div id="parent">
     <prism-highlighter></prism-highlighter>
-    <div id="output"></div>
+    <pre id="output"></pre>
 </div>
 `;
     }
@@ -19,8 +19,9 @@ class SampleElement extends PolymerElement {
         console.log(this.code);
         let ev = new CustomEvent('syntax-highlight', {
             detail: {
-                code: this.code
-            }
+                code: this.code,
+                lang: this.getAttribute("language")
+            },
         });
         this.$.parent.dispatchEvent(ev);
         this.$.output.innerHTML = ev.detail.code;
